@@ -3,7 +3,7 @@
  * Plugin Name: Browser check using JavaScript
  * Plugin URI: https://github.com/mhmli/mhm-browsercheck-js
  * Description: Add the shortode [browsercheck] in the page content. This uses JavaScript to identify the site visitor's browser information and display it on the site. A button is included which, when clicked, sends the information to the website administrator via email.
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: Mark Howells-Mead
  * Author URI: https://permanenttourist.ch/
  * License: GPL3+
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 class MHMBrowserCheckJs {
 
     public $key     = '';
-    public $version = '1.0.1';
+    public $version = '1.1.0';
     public $mailcontent = '<html><head></head><body><style>*{text-align:left}table{margin-bottom:1em}table,th,td{border-collapse:collapse;border:1px solid #ccc}td,th{padding:4px 8px;text-align:left}</style><p>Liebes Team</p><p>Folgende Information wurde auf der Webseite %1$s aufbereitet und mittels Knopfdruck gesendet.</p>%2$s</body><html>';
 
     public function __construct(){

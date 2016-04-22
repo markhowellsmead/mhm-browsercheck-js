@@ -6,10 +6,10 @@
             + '<button class="mhmbrowsercheckjs">Send this information to the site administrator</button>'
         );
         
-        $(window).on('mhmbrowsercheckjs:initbutton', function(){
+        $(window).on('MHMBrowserCheckJs:initbutton', function(){
             $('button.mhmbrowsercheckjs').on('click', function(){
-                $(window).trigger('mhmbrowsercheckjs:send');
+                $(window).trigger('MHMBrowserCheckJs:send');
             });
-        }).trigger('mhmbrowsercheckjs:initbutton');
+        }).trigger('MHMBrowserCheckJs:initbutton');
     });
 })(jQuery);
