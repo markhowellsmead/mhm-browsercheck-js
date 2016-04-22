@@ -3,7 +3,7 @@
  * Plugin Name: Browser check using JavaScript
  * Plugin URI: https://github.com/mhmli/mhm-browsercheck-js
  * Description: Add the shortode [browsercheck] in the page content. This uses JavaScript to identify the site visitor's browser information and display it on the site. A button is included which, when clicked, sends the information to the website administrator via email.
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Mark Howells-Mead
  * Author URI: https://permanenttourist.ch/
  * License: GPL3+
@@ -15,7 +15,7 @@ class MHMBrowserCheckJs {
 
     public $key     = '';
     public $version = '1.2.0';
-    public $mailcontent = '<html><head></head><body><style>*{text-align:left}table{margin-bottom:1em}table,th,td{border-collapse:collapse;border:1px solid #ccc}td,th{padding:4px 8px;text-align:left}</style><p>Liebes Team</p><p>Folgende Information wurde auf der Webseite %1$s aufbereitet und mittels Knopfdruck gesendet.</p>%2$s</body><html>';
+    public $mailcontent = '<html><head></head><body><style>*{text-align:left}table{margin-bottom:1em}table,th,td{border-collapse:collapse;border:1px solid #ccc}td,th{padding:4px 8px;text-align:left}</style><p>Dear site admin</p><p>The following information was collated on your website %2$s. The site visitor asked the plugin “%3$s” to send you the information… so here it is!</p>%4$s</body><html>';
 
     public function __construct(){
         $this->key = basename(__DIR__);
@@ -54,6 +54,8 @@ class MHMBrowserCheckJs {
 
         $mail_content = sprintf( $this->mailcontent,
             $_SERVER['HTTP_ORIGIN'],
+            get_option('blogname') . ' (' .get_option('siteurl') .')',
+            $this->key,
             stripslashes($_REQUEST['data'])
         );
 
@@ -62,7 +64,7 @@ class MHMBrowserCheckJs {
             __DIR__.'/logs/'.time().'-'.$_SERVER['REMOTE_ADDR'].'.html'
         );
 
-        if( wp_mail(  get_option('admin_email'), 'Browser check information from ' . $_SERVER['HTTP_ORIGIN'], $mail_content, array('Content-type: text/html')) ){
+        if( wp_mail(  get_option('admin_email'), 'Browser check information from ' . get_option('blogname') . ' (' .get_option('siteurl') .')', $mail_content, array('Content-type: text/html')) ){
             header($_SERVER['SERVER_PROTOCOL'] . ' 200 OK', true, 200);
             die('Your information has been sent. Thank you!');
         }else{
