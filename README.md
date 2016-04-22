@@ -1,7 +1,7 @@
 #Browser check using JavaScript
 
 ##Description
-This is a WordPress plugin. Add the shortode ``[browsercheck]`` to the content of a page or post. (Once per page only!)
+This is a WordPress plugin. Add the shortcode ``[browsercheck]`` to the content of a page or post. (Once per page only!)
 
 This adds a JavaScript code which identifies the site visitor's browser information and displays this on the page.
 
