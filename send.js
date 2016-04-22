@@ -5,8 +5,8 @@ var ajaxurl;
 	$(window).on('MHMBrowserCheckJs:send', function(e){
     	
     	if(ajaxurl){
-    		$button = $('button.frpbrowsercheck');
-    		$wait = $('<img src="/wp-content/themes/frp_support/img/ajax-loader.gif">');
+    		$button = $('button.mhmbrowsercheckjs');
+    		$wait = $('<p>Sending…</p>');
     		$button = $button.replaceWith($wait);
     		
     		mailtext = '';
